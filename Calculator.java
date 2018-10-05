@@ -41,6 +41,14 @@ public class Calculator {
                         System.out.print("Please enter the divisor: ");
                         BigDecimal divisor = new BigDecimal(input.nextDouble()).setScale(8, RoundingMode.HALF_UP);
                         printQuotient(dividend, divisor);
+                        break;
+                        
+                case 5: System.out.print("Please enter the divisor: ");
+                        BigDecimal inverseDivisor = new BigDecimal(input.nextDouble()).setScale(8, RoundingMode.HALF_UP);
+                        printReciprocal(inverseDivisor);
+                        break;
+                        
+                case 6:
             }
             
             System.out.print("Would you like to perform another calculation? (y / n): ");
@@ -55,6 +63,7 @@ public class Calculator {
         System.out.println("Subtraction (2)");
         System.out.println("Multiplication (3)");
         System.out.println("Division (4)");
+        System.out.println("Multiplicative Inverse (5)");
         System.out.print("Enter key to perform a calculation: ");
     }
     
@@ -76,5 +85,11 @@ public class Calculator {
     public static void printQuotient(BigDecimal dividend, BigDecimal divisor) {
         BigDecimal quotient = dividend.divide(divisor, RoundingMode.HALF_UP);
         System.out.println(dividend.stripTrailingZeros().toPlainString() + " / " + divisor.stripTrailingZeros().toPlainString() + " = " + quotient.stripTrailingZeros().toPlainString());
+    }
+    
+    public static void printReciprocal(BigDecimal inverseDivisor) {
+        BigDecimal one = new BigDecimal(1.0).setScale(8, RoundingMode.HALF_UP);
+        BigDecimal reciprocal = one.divide(inverseDivisor, RoundingMode.HALF_UP);
+        System.out.println("1 / " + inverseDivisor.stripTrailingZeros().toPlainString() + " = " + reciprocal.stripTrailingZeros().toPlainString());
     }
 }
